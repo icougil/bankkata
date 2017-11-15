@@ -2,9 +2,11 @@ package com.cougil.bank;
 
 public class Account {
     private final TransactionRepository transactionRepository;
+    private final StatementPrinter statementPrinter;
 
-    public Account(final TransactionRepository transactionRepository) {
+    public Account(final TransactionRepository transactionRepository, final StatementPrinter statementPrinter) {
         this.transactionRepository = transactionRepository;
+        this.statementPrinter = statementPrinter;
     }
 
     public void deposit(int amount) {
@@ -16,7 +18,7 @@ public class Account {
     }
 
     public void printStatement() {
-
+        statementPrinter.print(transactionRepository.findTransactions());
     }
 
 }

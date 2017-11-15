@@ -2,6 +2,7 @@ package com.cougil.bank.feature;
 
 import com.cougil.bank.Account;
 import com.cougil.bank.Console;
+import com.cougil.bank.StatementPrinter;
 import com.cougil.bank.TransactionRepository;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,7 +22,8 @@ public class PrintStatementFeature {
     @Before
     public void setUp() {
         TransactionRepository transactionRepository = new TransactionRepository();
-        account = new Account(transactionRepository);
+        StatementPrinter statementPrinter = new StatementPrinter();
+        account = new Account(transactionRepository, statementPrinter);
     }
 
     @Test
