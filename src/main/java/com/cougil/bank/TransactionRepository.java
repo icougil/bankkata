@@ -18,7 +18,8 @@ public class TransactionRepository {
     }
 
     public void addWithdraw(final int amount) {
-        throw new UnsupportedOperationException();
+        Transaction depositTransaction = new Transaction(clock.today(), -amount);
+        transactions.add (depositTransaction);
     }
 
     public List<Transaction> findTransactions() {
