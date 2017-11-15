@@ -15,13 +15,16 @@ import static org.mockito.Mockito.verify;
 @RunWith(MockitoJUnitRunner.class)
 public class AccountShould {
 
-    @Mock private TransactionRepository transactionRepository;
-    @Mock private StatementPrinter statementPrinter;
+    @Mock
+    private TransactionRepository transactionRepository;
+    @Mock
+    private StatementPrinter statementPrinter;
 
     private Account account;
 
     @Before
     public void setUp() {
+        TransactionRepositoryShould ts;
         account = new Account(transactionRepository, statementPrinter);
     }
 
@@ -39,7 +42,7 @@ public class AccountShould {
 
     @Test
     public void print_a_statement() {
-        List<Transaction> transactions = Arrays.asList( new Transaction() );
+        List<Transaction> transactions = Arrays.asList( new Transaction("16/11/2017", 100) );
         given(transactionRepository.findTransactions()).willReturn(transactions);
 
         account.printStatement();

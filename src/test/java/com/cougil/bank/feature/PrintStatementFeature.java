@@ -1,9 +1,6 @@
 package com.cougil.bank.feature;
 
-import com.cougil.bank.Account;
-import com.cougil.bank.Console;
-import com.cougil.bank.StatementPrinter;
-import com.cougil.bank.TransactionRepository;
+import com.cougil.bank.*;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,13 +12,13 @@ import org.mockito.junit.MockitoJUnitRunner;
 @RunWith(MockitoJUnitRunner.class)
 public class PrintStatementFeature {
 
-    @Mock
-    private Console console;
+    @Mock Console console;
+    @Mock Clock clock;
     private Account account;
 
     @Before
     public void setUp() {
-        TransactionRepository transactionRepository = new TransactionRepository();
+        TransactionRepository transactionRepository = new TransactionRepository(clock);
         StatementPrinter statementPrinter = new StatementPrinter();
         account = new Account(transactionRepository, statementPrinter);
     }
