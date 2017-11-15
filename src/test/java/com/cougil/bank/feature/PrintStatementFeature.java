@@ -2,6 +2,7 @@ package com.cougil.bank.feature;
 
 import com.cougil.bank.Account;
 import com.cougil.bank.Console;
+import com.cougil.bank.TransactionRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,7 +20,8 @@ public class PrintStatementFeature {
 
     @Before
     public void setUp() {
-        account = new Account();
+        TransactionRepository transactionRepository = new TransactionRepository();
+        account = new Account(transactionRepository);
     }
 
     @Test
