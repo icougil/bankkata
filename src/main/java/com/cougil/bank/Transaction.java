@@ -10,6 +10,14 @@ public class Transaction {
         this.amount = amount;
     }
 
+    public String date() {
+        return date;
+    }
+
+    public int amount() {
+        return amount;
+    }
+
     @Override
     public boolean equals(final Object o) {
         if (this == o) return true;
@@ -27,4 +35,5 @@ public class Transaction {
         result = 31 * result + amount;
         return result;
     }
+
 }
